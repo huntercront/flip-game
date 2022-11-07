@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./normalize-css/style.css">
+	<title>Flip game</title>
+</head>
+<style>
+	.container {
+		max-width: 80rem;
+		margin: 0 auto;
+		padding: 2rem;
+	}
+
+	._f-game img {
+		width: 100%;
+		height: auto;
+	}
+
+	body {
+		background: #F3F4F8;
+	}
+</style>
+
+<body>
+	<div class="container">
+		<style>
+			._f-card {
+				position: relative;
+
+				transform-style: preserve-3d;
+				position: relative;
+				border-radius: 1rem;
+				border: 1px solid #f4f4f4;
+				box-shadow: 0px 2.2px 6.6px rgba(0, 0, 0, 0.04),
+					0px 0px 1.1px rgba(0, 0, 0, 0.04);
+				transition: 350ms ease-in-out;
+				transition-property: transform, box-shadow;
+			}
+
+			._f-card:hover {
+				cursor: pointer;
+				transform: translate(0, -0.25rem);
+				box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06),
+					0px 2px 6px rgba(0, 0, 0, 0.07), 0px 0px 1px rgba(0, 0, 0, 0.06);
+			}
+
+			._f-game {
+				display: grid;
+				grid-template-columns: repeat(7, 1fr);
+				column-gap: 1rem;
+				row-gap: 1rem;
+			}
+
+			._f-card::before {
+				content: "";
+				display: block;
+				width: 100%;
+				padding-bottom: 100%;
+				pointer-events: none;
+			}
+
+			._front,
+			._back {
+				left: 0;
+				top: 0;
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				-webkit-backface-visibility: hidden;
+				backface-visibility: hidden;
+				position: absolute;
+				background: white;
+				border-radius: 1rem;
+			}
+
+			._back {
+				transform: rotateY(180deg);
+			}
+
+			._front img {
+				max-width: 35%;
+				opacity: 0.1;
+				user-select: none;
+			}
+
+			._back img {
+				max-width: 90%;
+				user-select: none;
+			}
+
+			._f-card._f-open {
+				transform: rotateY(180deg);
+			}
+
+			._f-card._f-complite {
+				transform: rotateY(180deg);
+				pointer-events: none;
+
+			}
+
+			._f-card ._back img,
+			._f-card._f-complite ._back {
+				transition: 300ms ease-in;
+				transition-property: opacity;
+			}
+
+			._f-card._f-complite ._back {
+				transition-property: background;
+			}
+
+			._f-card._f-complite ._back {
+				background: #F3F4F8;
+			}
+
+
+			._f-card._f-complite {
+				box-shadow: none;
+			}
+
+			._f-card._f-complite ._back img {
+				opacity: 0.4;
+			}
+		</style>
+
+
+
+
+		<div class="_f-game">
+
+			<div class="_f-card" data-card="1">
+				<div class="_front"><img src="./img/card-front.svg" alt="Front img" width="80" height="80"></div>
+				<div class="_back"><img src="./img/Angular.svg" alt="Back logo" width="150" height="75"></div>
+			</div>
+			<div class="_f-card" data-card="2">
+				<div class="_front"><img src="./img/card-front.svg" alt="Front img" width="80" height="80"></div>
+				<div class="_back"><img src="./img/Camunda.svg" alt="Back logo" width="150" height="75"></div>
+			</div>
+			<div class="_f-card" data-card="3">
+				<div class="_front"><img src="./img/card-front.svg" alt="Front img" width="80" height="80"></div>
+				<div class="_back"><img src="./img/Hadoop.svg" alt="Back logo" width="150" height="75"></div>
+			</div>
+			<div class="_f-card" data-card="4">
+				<div class="_front"><img src="./img/card-front.svg" alt="Front img" width="80" height="80"></div>
+				<div class="_back"><img src="./img/JupyterHub.svg" alt="Back logo" width="150" height="75"></div>
+			</div>
+			<div class="_f-card" data-card="5">
+				<div class="_front"><img src="./img/card-front.svg" alt="Front img" width="80" height="80"></div>
+				<div class="_back"><img src="./img/Kafka.svg" alt="Back logo" width="150" height="75"></div>
+			</div>
+			<div class="_f-card" data-card="6">
+				<div class="_front"><img src="./img/card-front.svg" alt="Front img" width="80" height="80"></div>
+				<div class="_back"><img src="./img/Keras.svg" alt="Back logo" width="150" height="75"></div>
+			</div>
+			<div class="_f-card" data-card="7">
+				<div class="_front"><img src="./img/card-front.svg" alt="Front img" width="80" height="80"></div>
+				<div class="_back"><img src="./img/mySQL.svg" alt="Back logo" width="150" height="75"></div>
+			</div>
+			<div class="_f-card" data-card="8">
+				<div class="_front"><img src="./img/card-front.svg" alt="Front img" width="80" height="80"></div>
+				<div class="_back"><img src="./img/Oracle.svg" alt="Back logo" width="150" height="75"></div>
+			</div>
+			<div class="_f-card" data-card="9">
+				<div class="_front"><img src="./img/card-front.svg" alt="Front img" width="80" height="80"></div>
+				<div class="_back"><img src="./img/PostgreSQL.svg" alt="Back logo" width="150" height="75"></div>
+			</div>
+			<div class="_f-card" data-card="10">
+				<div class="_front"><img src="./img/card-front.svg" alt="Front img" width="80" height="80"></div>
+				<div class="_back"><img src="./img/PyTorch.svg" alt="Back logo" width="150" height="75"></div>
+			</div>
+			<div class="_f-card" data-card="11">
+				<div class="_front"><img src="./img/card-front.svg" alt="Front img" width="80" height="80"></div>
+				<div class="_back"><img src="./img/React.svg" alt="Back logo" width="150" height="75"></div>
+			</div>
+			<div class="_f-card" data-card="12">
+				<div class="_front"><img src="./img/card-front.svg" alt="Front img" width="80" height="80"></div>
+				<div class="_back"><img src="./img/TensorFlow.svg" alt="Back logo" width="150" height="75"></div>
+			</div>
+			<div class="_f-card" data-card="13">
+				<div class="_front"><img src="./img/card-front.svg" alt="Front img" width="80" height="80"></div>
+				<div class="_back"><img src="./img/Teradata.svg" alt="Back logo" width="150" height="75"></div>
+			</div>
+			<div class="_f-card" data-card="1">
+				<div class="_front"><img src="./img/card-front.svg" alt="Front img" width="80" height="80"></div>
+				<div class="_back"><img src="./img/Angular.svg" alt="Back logo" width="150" height="75"></div>
+			</div>
+			<div class="_f-card" data-card="2">
+				<div class="_front"><img src="./img/card-front.svg" alt="Front img" width="80" height="80"></div>
+				<div class="_back"><img src="./img/Camunda.svg" alt="Back logo" width="150" height="75"></div>
+			</div>
+			<div class="_f-card" data-card="3">
+				<div class="_front"><img src="./img/card-front.svg" alt="Front img" width="80" height="80"></div>
+				<div class="_back"><img src="./img/Hadoop.svg" alt="Back logo" width="150" height="75"></div>
+			</div>
+			<div class="_f-card" data-card="4">
+				<div class="_front"><img src="./img/card-front.svg" alt="Front img" width="80" height="80"></div>
+				<div class="_back"><img src="./img/JupyterHub.svg" alt="Back logo" width="150" height="75"></div>
+			</div>
+			<div class="_f-card" data-card="5">
+				<div class="_front"><img src="./img/card-front.svg" alt="Front img" width="80" height="80"></div>
+				<div class="_back"><img src="./img/Kafka.svg" alt="Back logo" width="150" height="75"></div>
+			</div>
+			<div class="_f-card" data-card="6">
+				<div class="_front"><img src="./img/card-front.svg" alt="Front img" width="80" height="80"></div>
+				<div class="_back"><img src="./img/Keras.svg" alt="Back logo" width="150" height="75"></div>
+			</div>
+			<div class="_f-card" data-card="7">
+				<div class="_front"><img src="./img/card-front.svg" alt="Front img" width="80" height="80"></div>
+				<div class="_back"><img src="./img/mySQL.svg" alt="Back logo" width="150" height="75"></div>
+			</div>
+			<div class="_f-card" data-card="8">
+				<div class="_front"><img src="./img/card-front.svg" alt="Front img" width="80" height="80"></div>
+				<div class="_back"><img src="./img/Oracle.svg" alt="Back logo" width="150" height="75"></div>
+			</div>
+			<div class="_f-card" data-card="9">
+				<div class="_front"><img src="./img/card-front.svg" alt="Front img" width="80" height="80"></div>
+				<div class="_back"><img src="./img/PostgreSQL.svg" alt="Back logo" width="150" height="75"></div>
+			</div>
+			<div class="_f-card" data-card="10">
+				<div class="_front"><img src="./img/card-front.svg" alt="Front img" width="80" height="80"></div>
+				<div class="_back"><img src="./img/PyTorch.svg" alt="Back logo" width="150" height="75"></div>
+			</div>
+			<div class="_f-card" data-card="11">
+				<div class="_front"><img src="./img/card-front.svg" alt="Front img" width="80" height="80"></div>
+				<div class="_back"><img src="./img/React.svg" alt="Back logo" width="150" height="75"></div>
+			</div>
+			<div class="_f-card" data-card="12">
+				<div class="_front"><img src="./img/card-front.svg" alt="Front img" width="80" height="80"></div>
+				<div class="_back"><img src="./img/TensorFlow.svg" alt="Back logo" width="150" height="75"></div>
+			</div>
+			<div class="_f-card" data-card="13">
+				<div class="_front"><img src="./img/card-front.svg" alt="Front img" width="80" height="80"></div>
+				<div class="_back"><img src="./img/Teradata.svg" alt="Back logo" width="150" height="75"></div>
+			</div>
+
+		</div>
+		<script>
+			let cards = document.querySelectorAll('._f-card');
+			let timeShowing = 1000;
+			let timeComplite = 800;
+
+			// randomize(cards)
+
+			function getRandomIntInclusive(min, max) {
+				min = Math.ceil(min);
+				max = Math.floor(max);
+				return Math.floor(Math.random() * (max - min + 1)) + min;
+			}
+
+			function randomize(cards) {
+				cards.forEach(function (card) {
+					card.style.order = getRandomIntInclusive(1, cards.length + 1);
+				})
+			}
+
+			function closeCards(cards, time) {
+				setTimeout(() => {
+					cards.forEach(function (card) {
+						card.classList.remove('_f-open')
+					})
+				}, time);
+			}
+
+			function succesCards(cards, time) {
+				setTimeout(() => {
+					cards.forEach(function (card) {
+						card.classList.remove('_f-open');
+						card.classList.add('_f-complite');
+					})
+					checkEndGame()
+				}, time);
+			}
+
+			function checkEndGame() {
+				let compliteCards = document.querySelectorAll('._f-card._f-complite');
+				if (compliteCards.length == cards.length) {
+					alert('Ты выйграл');
+				}
+			}
+
+			cards.forEach(function (card) {
+				card.addEventListener('click', function (e) {
+					card.classList.add('_f-open')
+					let openedCards = document.querySelectorAll('._f-card._f-open');
+					if (openedCards.length > 2) {
+						card.classList.remove('_f-open')
+					}
+					if (openedCards.length == 2) {
+						if (openedCards[0].getAttribute('data-card') == openedCards[1].getAttribute('data-card')) {
+							succesCards(openedCards, timeComplite);
+						} else {
+							closeCards(openedCards, timeShowing);
+						}
+					}
+				})
+			})
+		</script>
+	</div>
+
+</body>
+
+</html>
