@@ -21,7 +21,7 @@
 	}
 
 	body {
-		background: #F3F4F8;
+		background: #000000;
 	}
 </style>
 
@@ -34,7 +34,7 @@
 				transform-style: preserve-3d;
 				position: relative;
 				border-radius: 1rem;
-				border: 1px solid #f4f4f4;
+				border: 1px solid #2B2B2B;
 				box-shadow: 0px 2.2px 6.6px rgba(0, 0, 0, 0.04),
 					0px 0px 1.1px rgba(0, 0, 0, 0.04);
 				transition: 350ms ease-in-out;
@@ -50,10 +50,12 @@
 
 			._f-game {
 				display: grid;
-				grid-template-columns: repeat(7, 1fr);
+				grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
 				column-gap: 1rem;
 				row-gap: 1rem;
 			}
+
+
 
 			._f-card::before {
 				content: "";
@@ -76,7 +78,7 @@
 				-webkit-backface-visibility: hidden;
 				backface-visibility: hidden;
 				position: absolute;
-				background: white;
+				background: #141414;
 				border-radius: 1rem;
 			}
 
@@ -116,7 +118,7 @@
 			}
 
 			._f-card._f-complite ._back {
-				background: #F3F4F8;
+				background: #000000;
 			}
 
 
@@ -127,10 +129,240 @@
 			._f-card._f-complite ._back img {
 				opacity: 0.4;
 			}
+
+			@media screen and (max-width:768px) {
+				._f-game {
+					grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+					column-gap: 0.5rem;
+					row-gap: 0.5rem;
+				}
+
+				._front,
+				._back,
+				._f-card {
+					border-radius: 0.5rem;
+				}
+			}
+
+
+			._modal {
+				position: fixed;
+				z-index: 9000;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				top: 0;
+				background: rgba(0, 0, 0, .6);
+				color: #fff;
+				visibility: hidden;
+				opacity: 0;
+				pointer-events: none;
+				transition: 300ms ease-in-out;
+				transition-property: visibility, opacity;
+			}
+
+			._modal._active {
+				pointer-events: all;
+				visibility: visible;
+				opacity: 1;
+			}
+
+			._modal-dialog {
+				margin: 2rem auto;
+				height: 100%;
+				display: flex;
+				align-items: center;
+				position: relative;
+				max-width: 26rem;
+			}
+
+			._modal-content {
+				background: #141414;
+				padding: 2rem;
+				border-radius: 1rem;
+				position: relative;
+				z-index: 20;
+				transform: scale(0.9);
+				opacity: 0;
+				transition: 200ms 200ms ease-in;
+				transition-property: transform, opacity;
+				width: 100%;
+				margin: 0 1rem;
+			}
+
+			._modal._active ._modal-content {
+				transform: scale(1);
+				opacity: 1;
+			}
+
+			._modal-body>* {
+				text-align: center;
+				user-select: none;
+			}
+
+			._modal-body {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+			}
+
+			._modal-title {
+				margin-top: 0;
+				margin-bottom: 0.5rem;
+			}
+
+			._modal-text {
+				margin-top: 0;
+				font-size: 0.85rem;
+			}
+
+			._modal-btn {
+				background: #593487;
+				color: #fff;
+				text-decoration: none;
+				cursor: pointer;
+				font-weight: 600;
+				padding: 0.75rem 1.5rem;
+				border-radius: 2rem;
+				display: block;
+				margin-top: 1.25rem;
+				transition: 200ms ease-in;
+				transition-property: background;
+			}
+
+			._modal-btn:hover {
+				background: #8942E2;
+			}
+
+			._close-modal {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			._close-modal svg {
+				width: 1.25rem;
+			}
+
+			._modal-header {
+				position: relative;
+			}
+
+			._close-modal {
+				background: #2B2B2B;
+				border: none;
+				cursor: pointer;
+				padding: 0.5rem;
+				opacity: 0.4;
+				transition: 150ms ease-in;
+				transition-property: opacity;
+				position: absolute;
+				right: -1.5rem;
+				top: -1.5rem;
+				border-radius: 0.5rem;
+			}
+
+			._close-modal:hover {
+				opacity: 1;
+			}
+
+			._modal-img {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin-bottom: 1.25rem;
+			}
+
+			._modal-img img {
+				max-width: 9rem;
+			}
+
+			._modal._active ._modal-dialog .bang {
+				border-radius: 50%;
+				box-shadow: 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff;
+				height: 9px;
+				width: 9px;
+				animation: 1s bang ease-out infinite backwards, 1s gravity ease-in infinite backwards, 5s position linear infinite backwards;
+				position: absolute;
+				animation-duration: 1.25s, 1.25s, 6.25s;
+				animation-play-state: paused;
+			}
+
+
+
+			@keyframes bang {
+				to {
+					box-shadow: -95px -126.6666666667px #2fff00, 63px -136.6666666667px #00ff6f, 83px -260.6666666667px #00ff7b, -160px -213.6666666667px #51ff00, -223px -400.6666666667px aqua, -145px -287.6666666667px #a6ff00, -202px -48.6666666667px #0004ff, -186px 67.3333333333px #6f00ff, -191px 23.3333333333px #00ffa2, 45px -372.6666666667px #ff0099, -232px 41.3333333333px #00ffb3, 118px 71.3333333333px #00fbff, 248px -4.6666666667px #00fff2, 13px -289.6666666667px #0051ff, -193px -400.6666666667px #00ff80, 51px -389.6666666667px #a6ff00, 20px -405.6666666667px #ff0059, 100px -319.6666666667px #00ff3c, -181px -351.6666666667px #0d00ff, 134px -238.6666666667px #ffbf00, 145px 55.3333333333px #77ff00, -124px -413.6666666667px #00fbff, -44px -25.6666666667px #5e00ff, -6px 80.3333333333px #ff00b7, 173px -240.6666666667px #88ff00, -172px 56.3333333333px fuchsia, -114px -325.6666666667px yellow, -129px 1.3333333333px #00ffd0, -164px 81.3333333333px #3700ff, 58px -386.6666666667px #40ff00, -191px -251.6666666667px #00ffea, -7px -314.6666666667px #00ff11, -13px -178.6666666667px #00ffd5, 110px -273.6666666667px #ff3c00, -144px -407.6666666667px #ff00e6, 165px -338.6666666667px #ff6a00, 113px -387.6666666667px #ff0099, 89px -97.6666666667px #0009ff, 162px -360.6666666667px #4dff00, 49px -276.6666666667px #ffc400, -156px -20.6666666667px #d0ff00, 159px -93.6666666667px #00e1ff, 18px -41.6666666667px #00ff40, -224px -85.6666666667px #00fbff, -172px -38.6666666667px #91ff00, -187px -37.6666666667px #15ff00, -59px -1.6666666667px #00ff09, 24px -16.6666666667px #00ff1e, 155px 12.3333333333px #00a6ff, -87px -273.6666666667px #00ffe6, -193px -358.6666666667px #5e00ff, -143px -305.6666666667px #ff00dd, 120px 75.3333333333px #ea00ff, 7px -79.6666666667px #00ff1a, 98px -373.6666666667px #ff00f2, -4px -148.6666666667px #ff00ae, 14px -169.6666666667px #51ff00, -150px -51.6666666667px #8000ff, 55px -24.6666666667px #ff007b, -24px -136.6666666667px deepskyblue, 139px -55.6666666667px #ff7300;
+				}
+			}
+
+			@keyframes gravity {
+				to {
+					transform: translateY(200px);
+					-webkit-transform: translateY(200px);
+					opacity: 0;
+				}
+			}
+
+			@keyframes position {
+
+				0%,
+				19.9% {
+					margin-top: 10%;
+					margin-left: 40%;
+				}
+
+				20%,
+				39.9% {
+					margin-top: 40%;
+					margin-left: 30%;
+				}
+
+				40%,
+				59.9% {
+					margin-top: 20%;
+					margin-left: 70%;
+				}
+
+				60%,
+				79.9% {
+					margin-top: 30%;
+					margin-left: 20%;
+				}
+
+				80%,
+				99.9% {
+					margin-top: 30%;
+					margin-left: 80%;
+				}
+			}
 		</style>
 
 
-
+		<div class="_modal">
+			<div class="_modal-dialog">
+				<div class="bang"></div>
+				<div class="_modal-content">
+					<div class="_modal-header">
+						<button class="_close-modal">
+							<svg fill="none" viewBox="0 0 20 20">
+								<path d="M15 5 5 15M5 5l10 10" stroke="#fff" stroke-width="1.67" stroke-linecap="round"
+									stroke-linejoin="round" />
+							</svg>
+						</button>
+					</div>
+					<div class="_modal-body">
+						<div class="_modal-img">
+							<img src="./img/stikers.svg" alt="stikers">
+						</div>
+						<h3 class="_modal-title">Поздравляем! Ты выйграл стикеры</h3>
+						<p class="_modal-text">Для получения стикеров перйди по ссылке ниже</p>
+						<a href="#" class="_modal-btn">Получить</a>
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<div class="_f-game">
 
@@ -157,10 +389,6 @@
 			<div class="_f-card" data-card="6">
 				<div class="_front"><img src="./img/card-front.svg" alt="Front img" width="80" height="80"></div>
 				<div class="_back"><img src="./img/Keras.svg" alt="Back logo" width="150" height="75"></div>
-			</div>
-			<div class="_f-card" data-card="7">
-				<div class="_front"><img src="./img/card-front.svg" alt="Front img" width="80" height="80"></div>
-				<div class="_back"><img src="./img/mySQL.svg" alt="Back logo" width="150" height="75"></div>
 			</div>
 			<div class="_f-card" data-card="8">
 				<div class="_front"><img src="./img/card-front.svg" alt="Front img" width="80" height="80"></div>
@@ -210,10 +438,7 @@
 				<div class="_front"><img src="./img/card-front.svg" alt="Front img" width="80" height="80"></div>
 				<div class="_back"><img src="./img/Keras.svg" alt="Back logo" width="150" height="75"></div>
 			</div>
-			<div class="_f-card" data-card="7">
-				<div class="_front"><img src="./img/card-front.svg" alt="Front img" width="80" height="80"></div>
-				<div class="_back"><img src="./img/mySQL.svg" alt="Back logo" width="150" height="75"></div>
-			</div>
+
 			<div class="_f-card" data-card="8">
 				<div class="_front"><img src="./img/card-front.svg" alt="Front img" width="80" height="80"></div>
 				<div class="_back"><img src="./img/Oracle.svg" alt="Back logo" width="150" height="75"></div>
@@ -245,7 +470,27 @@
 			let timeShowing = 1000;
 			let timeComplite = 800;
 
-			randomize(cards)
+			let modal = document.querySelector('._modal');
+			let docBody = document.querySelector('body');
+			let closeModal = document.querySelector('._close-modal');
+			let bang = document.querySelector('.bang');
+			// randomize(cards)
+
+			let modals = document.querySelectorAll('._modal, ._modal-dialog');
+			modals.forEach(function (modal) {
+				modal.addEventListener("click", function (event) {
+					console.log(event.currentTarget)
+					if (event.target !== event.currentTarget) return;
+					closeModals()
+				});
+			});
+			function closeModals() {
+				modal.classList.remove('_active')
+			}
+
+			closeModal.addEventListener('click', function (e) {
+				closeModals()
+			})
 
 			function getRandomIntInclusive(min, max) {
 				min = Math.ceil(min);
@@ -280,7 +525,12 @@
 			function checkEndGame() {
 				let compliteCards = document.querySelectorAll('._f-card._f-complite');
 				if (compliteCards.length == cards.length) {
-					alert('Ты выйграл');
+					modal.classList.add('_active')
+					bang.style.animationPlayState = 'running';
+					setTimeout(() => {
+						bang.style.animationPlayState = 'paused';
+						console.log('paused')
+					}, 5000);
 				}
 			}
 
@@ -300,6 +550,7 @@
 					}
 				})
 			})
+
 		</script>
 	</div>
 
